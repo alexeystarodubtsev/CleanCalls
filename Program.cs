@@ -16,11 +16,207 @@ namespace MergeFilesWss
     {
         static void Main(string[] args)
         {
-            //ReWrite();
-             Cleaning();
-           // CleaningWork();
+            //ReWrite();             
+            Cleaning();
+            //CleaningWork();
             //MergeFilesWss(); 
+            //KillManager();
+            //KillClientDubbed();
+            //KillLastDateTo();
+            //SetStatus();
         }
+
+        static void SetStatus()
+        {
+            var files = Directory.GetFiles("Clean");
+            XLWorkbook wb = new XLWorkbook(files.First());
+
+
+            Console.WriteLine("Введите дату закрытия");
+
+            string date = Console.ReadLine();
+
+            DateTime dateDT = new DateTime();
+
+            dateDT = Convert.ToDateTime(date);
+
+            foreach (var page in wb.Worksheets)
+            {
+                List<int> tagged = new List<int>();
+
+                if (page.Name != "Архив")
+                {
+                    var Rng = page.RangeUsed();
+
+                    for (int i = 2; i <= Rng.LastRow().RowNumber(); i++)
+                    {
+                        for (int j = 1; j <= Rng.LastColumn().ColumnNumber() - 1; j++)
+                        {
+                            if (Regex.Match(page.Cell(1, j).GetString(), "Дата", RegexOptions.IgnoreCase).Success == true && j == 7)
+                            {
+                                if (page.Cell(i, 7).GetString() == "")
+                                {
+                                    page.Cell(i, 6).SetValue<string>("Закрыт");
+                                    page.Cell(i, 7).SetValue<string>(dateDT.ToString("dd.MM.yyyy"));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            wb.SaveAs(@"Result\Аналитика " + DateTime.Now.ToString("dd.MM") + ".xlsx");
+        }
+
+        static void KillLastDateTo()
+        {
+            var files = Directory.GetFiles("Clean");
+            XLWorkbook wb = new XLWorkbook(files.First());
+
+            Console.WriteLine("Введите дату перед которой удалить");
+
+            string date = Console.ReadLine();
+
+            DateTime dateDT = new DateTime();
+
+            dateDT = Convert.ToDateTime(date);
+
+            foreach (var page in wb.Worksheets)
+            {
+                List<int> tagged = new List<int>();
+
+                if (page.Name != "Архив")
+                {
+                    var Rng = page.RangeUsed();
+
+                    for (int i = 2; i <= Rng.LastRow().RowNumber(); i++)
+                    {
+                        for (int j = 1; j <= Rng.LastColumn().ColumnNumber() - 1; j++)
+                        {
+                            if (Regex.Match(page.Cell(1, j).GetString(), "Дата", RegexOptions.IgnoreCase).Success == true)
+                            {
+                                string buf = "";
+                                date = page.Cell(i, j).GetString();
+
+                                for(int k = 0, q = 0; k < date.Length; k++)
+                                {
+                                    if (q < 3)
+                                    {
+                                        if (date[k] == '.')
+                                        {
+                                            q++;
+                                            buf += '/';
+                                        }
+                                        else buf += date[k];
+                                    }
+                                    else
+                                    {
+                                        // текущий год
+                                        buf += "2021";
+                                    }
+                                }
+
+                                if (buf == "") continue;
+                                else if (Convert.ToDateTime(buf) <= dateDT)
+                                {
+                                    page.Row(i).Delete();
+
+                                    i--;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            wb.SaveAs(@"Result\Аналитика " + DateTime.Now.ToString("dd.MM") + ".xlsx");
+        }
+
+        static void KillClientDubbed()
+        {
+            string buf = "";
+
+            var files = Directory.GetFiles("Clean");
+            XLWorkbook wb = new XLWorkbook(files.First());
+
+            foreach (var page in wb.Worksheets)
+            {
+                List<int> tagged = new List<int>();
+
+                if (page.Name != "Архив")
+                {
+                    var Rng = page.RangeUsed();
+
+                    for (int i = 2; i <= Rng.LastRow().RowNumber(); i++)
+                    {
+                        for (int j = 1; j <= Rng.LastColumn().ColumnNumber() - 1; j++)
+                        {
+                            if (Regex.Match(page.Cell(1, j).GetString(), "Клиент", RegexOptions.IgnoreCase).Success == true)
+                            {
+                                buf = page.Cell(i, j).GetString();
+
+                                if (page.Cell(i+1, j).GetString() == buf)
+                                {
+                                    page.Row(i).Delete();
+                                    page.Row(i).Delete();
+                                }
+                                else 
+                                {
+                                    buf = "";
+                                    j = i + 2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            wb.SaveAs(@"Result\Аналитика " + DateTime.Now.ToString("dd.MM") + ".xlsx");
+        }
+
+        static void KillManager()
+        {
+            List<string> nameManagers = new List<string>();
+            int qM;
+
+            Console.WriteLine("Введите кол-во удаляемых менеджеров");
+
+            qM = Convert.ToInt32(Console.ReadLine());
+
+            for(int i = 0; i < qM; i++)
+            {
+                Console.WriteLine("Введите имя менеджера");
+
+                nameManagers.Add(Console.ReadLine());
+            }
+
+            var files = Directory.GetFiles("Clean");
+            XLWorkbook wb = new XLWorkbook(files.First());
+
+            foreach (var page in wb.Worksheets)
+            {
+                if (page.Name != "Архив")
+                {
+                    var Rng = page.RangeUsed();
+
+                    for (int i = 1; i <= Rng.LastRow().RowNumber(); i++)
+                    {
+                        for (int j = 1; j <= Rng.LastColumn().ColumnNumber() - 1; j++)
+                        {
+                            if ((Regex.Match(page.Cell(1, j).GetString(), "Ответственный", RegexOptions.IgnoreCase).Success) == true)
+                            {
+                                for (int k = 0; k < nameManagers.Count; k++)
+                                {
+                                    if (Regex.Match(page.Cell(i, j).GetString(), (string.Format(@"{0}$", nameManagers[k])), RegexOptions.IgnoreCase).Success)
+                                    {
+                                        page.Row(i).Delete();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            wb.SaveAs(@"Result\Аналитика " + DateTime.Now.ToString("dd.MM") + ".xlsx");
+        }
+
         static void MergeFilesWss()
         {
             var files = Directory.GetFiles("ToMerge");
@@ -34,7 +230,7 @@ namespace MergeFilesWss
                 {
                     var newRange = page.RangeUsed();
                     try
-                    {
+                    { 
                         var oldRange = oldwb.Worksheet(page.Name).RangeUsed();
                         for (int i = 2; i <= newRange.LastRow().RowNumber(); i++)
                         {
@@ -95,7 +291,7 @@ namespace MergeFilesWss
                 if (page.Name != "Архив" && page.Name!= "Упущенные" && !Regex.Match(page.Name, "> 4 недель", RegexOptions.IgnoreCase).Success)
                 {
                     var Rng = page.RangeUsed();
-                    var lastcol = Rng.LastColumn().ColumnNumber();
+                    var lastcol = Rng.LastColumn().ColumnNumber() - 1;
                     DateTime dateNext;
                     for (int i = 2; i <= Rng.LastRow().RowNumber(); i++)
                     {
@@ -193,13 +389,13 @@ namespace MergeFilesWss
                     DateTime dateNext;
                     for (int i = 2; i <= Rng.LastRow().RowNumber(); i++)
                     {
-                        if (!DateTime.TryParse(page.Cell(i, lastcol).GetString(), new CultureInfo("ru-RU"), DateTimeStyles.None, out dateNext))
+                        if (!DateTime.TryParse(page.Cell(i, lastcol - 1).GetString(), new CultureInfo("ru-RU"), DateTimeStyles.None, out dateNext))
                         {
-                            DateTime.TryParse(page.Cell(i, lastcol).GetString(), new CultureInfo("en-US"), DateTimeStyles.None, out dateNext);
+                            DateTime.TryParse(page.Cell(i, lastcol - 1).GetString(), new CultureInfo("en-US"), DateTimeStyles.None, out dateNext);
                         }
-                        if (!Regex.Match(page.Cell(i, lastcol - 2).GetString(), "успе", RegexOptions.IgnoreCase).Success
+                        if (!Regex.Match(page.Cell(i, lastcol - 4).GetString(), "успе", RegexOptions.IgnoreCase).Success
 
-                           || (Regex.Match(page.Cell(i, lastcol - 2).GetString(), "успе", RegexOptions.IgnoreCase).Success && dateNext > DateTime.Today.AddDays(-30)) )
+                           || (Regex.Match(page.Cell(i, lastcol - 4).GetString(), "успе", RegexOptions.IgnoreCase).Success && dateNext > DateTime.Today.AddDays(-30)) )
                           
                         {
                             

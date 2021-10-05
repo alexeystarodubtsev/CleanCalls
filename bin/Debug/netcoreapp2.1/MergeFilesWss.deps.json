@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "596b10eb3b640b901e80c930645ccf748a419022"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
@@ -128,16 +128,6 @@
           "System.Threading.Tasks": "4.0.11",
           "runtime.native.System": "4.0.0",
           "runtime.native.System.IO.Compression": "4.1.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
         }
       },
       "System.IO.FileSystem/4.0.1": {
@@ -284,35 +274,35 @@
     "ClosedXML/0.95.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4+cGR55nOoJKGuMi5aIVqUS+O73Km5Cd62IGgQJ+W16DuipRihX7Bmqou+OsmwEbJ3a+iI0yGavVvfy6hWPj8Q==",
+      "sha512": "sha512-Ud8+fHLzZRjtSk7NMxl5krRCXZ5zD92TdfhLEt22YFBkqWD4BI8Vhxir9VDcFCeOD2JVa/hzpkbWqE3TeC84WQ==",
       "path": "closedxml/0.95.3",
       "hashPath": "closedxml.0.95.3.nupkg.sha512"
     },
     "DocumentFormat.OpenXml/2.7.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u9usZhU+cn/WG32UR1FbmKemC/O8hDssXWr1oFhAUR3WZTMl35mLRVVfaKH/3CNoxV8um8uGrK+7rpwxJUtCiA==",
+      "sha512": "sha512-tWT7iu0ab9PNoMTWjv24rt+qnyqvcnPOYs167vPnk4aegAYSAxoUjwNW+VxY8xoLtJntQ/JlWTi7Vt+8TghLlQ==",
       "path": "documentformat.openxml/2.7.2",
       "hashPath": "documentformat.openxml.2.7.2.nupkg.sha512"
     },
     "ExcelNumberFormat/1.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-T9B+/SzXMjeAg207R0bjIrYz+B6gxC+z+gasZtKpJFu/v4zX4eT4zWXSLHyGbmjasPsP4ePmzm5fkTSykXwfLQ==",
+      "sha512": "sha512-dRx817M5t0sv4GCJyAXU8qmhFXcqRpCHzLpxNmkMWTvzlfE0/KM7BNk6qEble0ffAr4xT7RyU7s/HpovVlA/9g==",
       "path": "excelnumberformat/1.0.10",
       "hashPath": "excelnumberformat.1.0.10.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LJaYhRX5VxTUuD9WUPGD3GpWTgs89SVfoOPvSEdt66tL3lQvny9sR/ZiC3px1qUV5EFebS44i2CBeiliHVaQ3w==",
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "path": "microsoft.csharp/4.7.0",
       "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
     },
     "Microsoft.Win32.SystemEvents/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-K2TAr07pgl/m/J9ed3cmAzx0SD55kYuVfBG6SPRIH/ELTh/D2qGrjOWDQJo7r+LZl1nO2Nkl0UAQBUt6S2ewqQ==",
+      "sha512": "sha512-LuI1oG+24TUj1ZRQQjM5Ew73BKnZE5NZ/7eAdh1o8ST5dPhUnJvIkiIn2re3MwnkRy6ELRnvEbBxHP8uALKhJw==",
       "path": "microsoft.win32.systemevents/4.5.0",
       "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
     },
@@ -347,7 +337,7 @@
     "System.Drawing.Common/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uYixYbB0vzxSbc9B7jzwwUA8Upodaj3g2ZNnREWW6zoBw9DltzltcEa1g0I4u6ARqVJ0t4E3yJAWw5h2gvJlhQ==",
+      "sha512": "sha512-AiJFxxVPdeITstiRS5aAu8+8Dpf5NawTMoapZ53Gfirml24p7HIfhjmCRxdXnmmf3IUA3AX3CcW7G73CjWxW/Q==",
       "path": "system.drawing.common/4.5.0",
       "hashPath": "system.drawing.common.4.5.0.nupkg.sha512"
     },
@@ -389,7 +379,7 @@
     "System.IO.Packaging/4.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9TuysO6d3y3/0PzdllpPp2UeI4j5nJ9TYYz9QyzHd2ycxDcxpoafO6JEYPyRcwPjTauPrD1DBJDsd46G8T4Ntg==",
+      "sha512": "sha512-taPqPWcAj/h6e/c+zIWIVe1ddJtpV6acC6g9GpolxUcIwUaH6zc0ZbFS8kkVzBkuWv76pMalKeTzfmHtfT1pXA==",
       "path": "system.io.packaging/4.0.0",
       "hashPath": "system.io.packaging.4.0.0.nupkg.sha512"
     },

@@ -9,3 +9,16 @@ C:\Users\xiaomi\source\repos\MergeFilesWss\MergeFilesWss\obj\Debug\netcoreapp2.1
 C:\Users\xiaomi\source\repos\MergeFilesWss\MergeFilesWss\bin\Debug\netcoreapp2.1\MergeFilesWss.pdb
 C:\Users\xiaomi\source\repos\MergeFilesWss\MergeFilesWss\obj\Debug\netcoreapp2.1\MergeFilesWss.dll
 C:\Users\xiaomi\source\repos\MergeFilesWss\MergeFilesWss\obj\Debug\netcoreapp2.1\MergeFilesWss.pdb
+C:\Users\79057\CleanCalls\bin\Debug\netcoreapp2.1\MergeFilesWss.deps.json
+C:\Users\79057\CleanCalls\bin\Debug\netcoreapp2.1\MergeFilesWss.runtimeconfig.json
+C:\Users\79057\CleanCalls\bin\Debug\netcoreapp2.1\MergeFilesWss.runtimeconfig.dev.json
+C:\Users\79057\CleanCalls\bin\Debug\netcoreapp2.1\MergeFilesWss.dll
+C:\Users\79057\CleanCalls\bin\Debug\netcoreapp2.1\MergeFilesWss.pdb
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.csproj.AssemblyReference.cache
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.AssemblyInfoInputs.cache
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.AssemblyInfo.cs
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.csproj.CoreCompileInputs.cache
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.dll
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.pdb
+C:\Users\79057\CleanCalls\obj\Debug\netcoreapp2.1\MergeFilesWss.genruntimeconfig.cache
